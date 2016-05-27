@@ -13,8 +13,7 @@ namespace PalringoInformationScraper.Core.Models
 
         public string AvatarLink { get; }
 
-        private Image _avatar;       
-        public Task<Image> Avatar => GetAvatarAsync(); 
+        public Image Avatar { get; private set; }
 
         public string Username { get; }
 
@@ -28,11 +27,11 @@ namespace PalringoInformationScraper.Core.Models
 
         public async Task<Image> GetAvatarAsync()
         {
-            if (_avatar != null)
-                return _avatar;
+            if (Avatar != null)
+                return Avatar;
 
             using (var avatarStream = await _client.GetStreamAsync(AvatarLink))      
-                return _avatar = Image.FromStream(avatarStream); 
+                return Avatar = Image.FromStream(avatarStream); 
         }
 
         public AccountInformation(HttpClient client, string balance, string avatarLink, string username, string email, string userId, string reputation, DateTime joined)

@@ -26,7 +26,7 @@ namespace PalringoInformationScraper.UI.Forms
             lblLoginStatus.Text = "Login Status: Successful";
 
             var information = await _palringoProvider.GetInformationAsync();
-            pictureBox1.Image = await information.GetAvatarAsync();
+            pbAvatar.Image = await information.GetAvatarAsync();
         }  
     }
 }
