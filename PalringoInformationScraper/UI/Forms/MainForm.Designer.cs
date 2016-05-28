@@ -14,7 +14,10 @@
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
+            {
                 components.Dispose();
+                _palringoProvider.Dispose();
+            }
 
             base.Dispose(disposing);
         }
